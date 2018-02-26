@@ -1,0 +1,22 @@
+{
+  "name": "angularmvc",
+  "description": "",
+  "main": "",
+  "authors": [
+    "KovaCode <kovacicnatural@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/KovaCode/AngularMVC",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.6.9",
+    "angular": "^1.6.9",
+    "normalize-css": "~3"
+  }
+}

@@ -1,6 +1,5 @@
 ﻿angular.module('myApp')
-
-    .controller('MakeController', ['$scope', 'makeService', function ($scope, makeService) {
+    .controller('MakeController', ['$scope', 'MakeService', function ($scope, makeService) {
         $scope.getAllMake = function () {
             makeService.getAllMake()
             .then(function (response) {
@@ -12,13 +11,5 @@
                 $scope.error = "can not get data";
                 
             });
-
-                //.success(function (response) {
-                //    $scope.makes = response.records;
-                //    $scope.error = null;
-                //}).error(function () {
-                //    $scope.makes = null;
-                //    $scope.error = 'Server communication error';
-                //});
         };
     }]);
