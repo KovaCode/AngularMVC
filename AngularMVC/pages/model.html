@@ -1,0 +1,30 @@
+﻿<div class="jumbotron text-center">
+    <h1>Model Page</h1>
+    <p>{{ message }}</p>
+</div>
+
+<div class="container">
+
+    <form class="form-group">
+        <div class="form-inline">
+            <input type="text" name="search" class="form-control" placeholder="Search People..."/>
+            <button type="submit" class="btn btn-primary"> Search </button>
+        </div>
+    </form>
+
+    <table ng-init="getAllModels()" class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Make(Name)</th>
+                <th>Abrv</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="x in models">
+            <td>{{x.Name}}</td>
+            <td>{{x.Make.Name}}</td>
+            <td>{{x.Abrv}}</td>
+        </tr>
+    </table>
+    <a href="#!">Back</a>
+</div>

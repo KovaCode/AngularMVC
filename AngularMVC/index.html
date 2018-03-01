@@ -1,30 +1,55 @@
 ﻿<!DOCTYPE html>
-<html ng-app="myApp">
+<html ng-app="app">
 <head>
-    <meta charset="utf-8" />
     <title>Angular MVC - Cars</title>
+    <!--style-->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/font-awesome/web-fonts-with-css/css/fontawesome.css" rel="stylesheet">
+    <!--angular-->
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
+    <!--<script src="bower_components/angular-route/angular-route.js"></script>-->
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+
+
+    <!-- Modules -->
     <script src="js/app.js"></script>
-    <script src="js/service/makeService.js"></script>
-    <script src="js/controller/makeController.js"></script>
+    <!-- Controllers -->
+    <script src="js/controller/controllerWS.js"></script>
+    <!-- Services -->
+    <script src="js/service/api.service.js"></script>
+
 </head>
 
 <body>
-    <div ng-controller="MakeController">
-        <table ng-init="getAllMake()" border="1">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Abrv</th>
-            </tr>
-            <tr ng-repeat="x in makes">
-                <td>{{x.Id}}</td>
-                <td>{{x.Name}}</td>
-                <td>{{x.Abrv}}</td>
-            </tr>
-        </table>
-    </div>
-</body>
 
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#somethingNotExisting">Angular Routing Example</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#!"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li>
+                    <a href="#!/make"><i class="fa fa-shield"></i>Make</a>
+                </li>
+                <li>
+                    <a href="#!/model"><i class="fa fa-comment"></i>Model</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="main">
+        <div ng-view=""></div>
+    </div>
+
+
+
+    <footer class="text-center">
+        <p>Footer...</p>
+    </footer>
+</body>
 </html>

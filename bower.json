@@ -17,6 +17,9 @@
   "dependencies": {
     "angular-route": "^1.6.9",
     "angular": "^1.6.9",
-    "normalize-css": "~3"
+    "normalize-css": "~3",
+    "bootstrap": "^4.0.0",
+    "font-awesome": "^5.0.7",
+    "angular-bootstrap": "^2.5.0"
   }
 }
