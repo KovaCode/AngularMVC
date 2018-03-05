@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--style-->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/font-awesome/web-fonts-with-css/css/fontawesome.css" rel="stylesheet">
+    <!--angular-->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+</head>
+
+<body ng-app="app">
+    <hr />
+    <h3>
+        Send Objects of Objects Using AngularJS
+    </h3>
+
+    <div class="form-control" ng-controller="controllerWS">
+        <form>
+            <div>
+                <label for="maker">Make</label>
+                <input ng-model="makeData.name" placeholder="input maker....">
+                <small id="emailHelp">Maker name</small>
+            </div>
+            <div class="form-group">
+                <label for="abrv">Abrv.</label>
+                <input ng-model="makeData.abrv" placeholder="input maker....">
+            </div>
+            <button ng-click="" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>
