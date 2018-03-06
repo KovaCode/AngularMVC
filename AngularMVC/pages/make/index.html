@@ -43,7 +43,7 @@
                         </thead>
 
                         <tbody>
-                            <tr dir-paginate="make in data|orderBy:sortBy:reverse|filter:search|itemsPerPage:5">
+                            <tr dir-paginate="make in data|orderBy:sortBy:reverse|filter:search|itemsPerPage:{{searchData.resultsPerPage}}">
                                 <td><a ng-href="#!/make/details/{{make.Id}}">{{make.Id}}&nbsp;</a></td>
                                 <td>{{make.Name}}</td>
                                 <td>{{make.Abrv}}</td>
@@ -51,35 +51,14 @@
                         </tbody>
                     </table>
 
-
-                    <form name="myForm" ng-controller="controllerWS">
-                        <div class="col-md-2">
-                            <div>
-                                <input type="number" step="5" name="input" ng-model='searchData.resultsPerPage' min="0" max="100" value={{searchData.resultsPerPage}} required>
-                            </div>
-                        </div>
-
-                        <div role="alert">
-                            <span class="error" ng-show="myForm.input.$error.required">
-                                Required!
-                            </span>
-                            <span class="error" ng-show="myForm.input.$error.number">
-                                Not valid number!
-                            </span>
-                        </div>
+                    <dir-pagination-controls max-size=10
+                                             direction-links="true"
+                                             boundary-links="true">
+                    </dir-pagination-controls>
 
 
-                        <dir-pagination-controls max-size=10
-                                                 direction-links="true"
-                                                 boundary-links="true">
-                        </dir-pagination-controls>
 
-                    </form>
-
-
-                    <form method="get" action="#!/makeCreate">
-                        <button type="submit">Create</button>
-                    </form>
+                    <a ng-href="#!makeCreate" class="btn btn-primary">Create</a>
 
                 </div>
             </div>

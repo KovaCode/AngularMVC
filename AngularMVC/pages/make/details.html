@@ -1,25 +1,24 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <!--style-->
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bower_components/font-awesome/web-fonts-with-css/css/fontawesome.css" rel="stylesheet">
-    <!--angular-->
-    <!--<script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>-->
+
+
 </head>
 
-<body ng-app="app">
+<body ng-app="app" ng-controller="controllerWS">
     <hr />
     <h3>
         Read Make
     </h3>
 
-    <div ng-controller="controllerWS" ng-init="getMake(id)">
+    <div ng-init="getMake(id)">
         <label>ID {{id}}</label></br>
         <label>Make {{data.Name}}</label></br>
         <label>Abrv {{data.Abrv}}</label></br>
     </div>
+
+    <a ng-href="#!make" class="btn btn-warning btn-sm">Back</a>
+    <a ng-click="deleteMake(id)" ng-href="#!make" class="btn btn-danger btn-sm">Delete</a>
 
 </body>
 </html>

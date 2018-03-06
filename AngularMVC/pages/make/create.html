@@ -20,13 +20,14 @@
             <div>
                 <label for="maker">Make</label>
                 <input ng-model="makeData.name" placeholder="input maker....">
-                <small id="emailHelp">Maker name</small>
+                <!--<small id="emailHelp">Maker name</small>-->
             </div>
             <div class="form-group">
                 <label for="abrv">Abrv.</label>
                 <input ng-model="makeData.abrv" placeholder="input maker....">
             </div>
-            <button ng-click="" type="submit" class="btn btn-primary">Submit</button>
+            <a ng-click="createMake(makeData)" ng-href="#!make" class="btn btn-primary">Submit</a>
+            <a ng-href="#!make" class="btn btn-warning">Back</a>
         </form>
     </div>
 

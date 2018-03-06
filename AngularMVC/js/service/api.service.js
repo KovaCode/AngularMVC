@@ -11,24 +11,28 @@
             return $http.get('http://localhost/WebApi/api/make/' + id)
         }
 
+        this.createMake = function (data) {
+            return $http({
+                method: "POST",
+                url: "http://localhost/WebApi/api/make/",
+                data: data, 
+                headers: { 'Content-Type': "application/json" }
+            })
+        }
 
-        //this.getMake = function (id) {
-        //    return $http.get('http://localhost/WebApi/api/make/', { params: { id: id }}
-        //    )
-        //};
+
+        this.deleteMake = function (id) {
+            return $http({
+                method: "DELETE",
+                url: "http://localhost/WebApi/api/make/" + id
+            })
+        }
 
 
-        this.getFilteredMakes = function (searchValue) {
-            $http.get('http://localhost/WebApi/api/make/find?searchValue=' + searchValue);
-        };
+
 
         this.getAllModels = function () {
             return $http.get('http://localhost/WebApi/api/model')
         }
-
-        this.createMake = function (data) {
-            return $http.get('http://localhost/WebApi/api/create')
-        }
-
 
     }]);
