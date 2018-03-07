@@ -12,10 +12,10 @@
                 <div ng-init="getAllMakes()">
 
                     <!--<div class="alert alert-success">
-                        <p>Sort By: {{sortBy}}</p>
-                        <p>Reverse: {{reverse}}</p>
-                        <p>Search Text : {{search}}</p>
-                    </div>-->
+        <p>Sort By: {{sortBy}}</p>
+        <p>Reverse: {{reverse}}</p>
+        <p>Search Text : {{search}}</p>
+    </div>-->
 
                     <div class="col-12">
                         <div>
@@ -44,7 +44,7 @@
 
                         <tbody>
                             <tr dir-paginate="make in data|orderBy:sortBy:reverse|filter:search|itemsPerPage:10">
-                                <td><a ng-href="#!/make/details/{{make.Id}}">{{make.Id}}&nbsp;</a></td>
+                                <td><a ng-href="#!/details/{{make.Id}}">{{make.Id}}&nbsp;</a></td>
                                 <td>{{make.Name}}</td>
                                 <td>{{make.Abrv}}</td>
                             </tr>

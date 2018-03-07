@@ -14,8 +14,12 @@
                 templateUrl: 'pages/make/create.html',
                 controller: 'controllerWS'
             })
-            .when('/make/details/:id', {
+            .when('/details/:id', {
                 templateUrl: 'pages/make/details.html',
+                controller: 'controllerWS'
+            })
+            .when('/edit/:id', {
+                templateUrl: 'pages/make/edit.html',
                 controller: 'controllerWS'
             })
             .when('/model', {

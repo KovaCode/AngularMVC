@@ -14,12 +14,21 @@
 
         this.createMake = function (data) {
             var headers = { 'Content-Type': "application/json" }
-            return this.formCall("make", "POST", headers, data)
+            return this.formCall("make", null , "POST", headers, data)
         }
+
+        this.updateMake = function (data) {
+
+        }
+
 
         this.deleteMake = function (id) {
             return this.formCall("make", id, "DELETE")
         }
+
+
+
+
 
         // models calls //
         this.getAllModels = function () {
