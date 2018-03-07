@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+</head>
+
+<body ng-app="app" ng-controller="controllerWS">
+    <hr />
+    <h3>
+        Read Make
+    </h3>
+
+    <div ng-init="getMake(id)">
+        <label>ID {{id}}</label></br>
+        <label>Make {{data.Name}}</label></br>
+        <label>Abrv {{data.Abrv}}</label></br>
+    </div>
+
+    <a ng-href="#!make" class="btn btn-warning btn-sm">Back</a>
+    <a ng-click="save(id)" ng-href="#!make" class="btn btn-success btn-sm">Save</a>
+    <a ng-click="deleteMake(id)" ng-href="#!make" class="btn btn-danger btn-sm">Delete</a>
+
+</body>
+</html>

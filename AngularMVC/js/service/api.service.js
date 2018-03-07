@@ -1,38 +1,48 @@
 ﻿angular.module('app')
     .service('appService', ['$http', '$q', function ($http, $q) {
+        var host = "api.local";
+        var path = "/WebApi/api/";
 
-        var id;
-
+        // make calls //
         this.getAllMakes = function () {
-            return $http.get('http://localhost/WebApi/api/make');
+            return this.formCall('make')
         };
 
         this.getMake = function (id) {
-            return $http.get('http://localhost/WebApi/api/make/' + id)
+            return this.formCall('make', id)
         }
 
         this.createMake = function (data) {
-            return $http({
-                method: "POST",
-                url: "http://localhost/WebApi/api/make/",
-                data: data, 
-                headers: { 'Content-Type': "application/json" }
-            })
+            var headers = { 'Content-Type': "application/json" }
+            return this.formCall("make", "POST", headers, data)
         }
-
 
         this.deleteMake = function (id) {
-            return $http({
-                method: "DELETE",
-                url: "http://localhost/WebApi/api/make/" + id
-            })
+            return this.formCall("make", id, "DELETE")
+        }
+
+        // models calls //
+        this.getAllModels = function () {
+            return this.formCall("model")
         }
 
 
+        // utils //
+        this.formCall = function (controller, id = null, method = "GET", headers = null, data = null) {
+            var url = null;
 
+            if (id == null) {
+                url = 'http://' + host + path + controller;
+            } else {
+                url = 'http://' + host + path + controller + '/' + id;
+            }
 
-        this.getAllModels = function () {
-            return $http.get('http://localhost/WebApi/api/model')
+            return $http({
+                method: method,
+                headers: headers,
+                data: data,
+                url: url
+            })
         }
 
     }]);

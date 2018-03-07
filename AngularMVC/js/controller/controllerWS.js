@@ -34,7 +34,6 @@
         };
 
         $scope.getAllMakes = function () {
-            //console.log("Results per page: " + searchData.resultsPerPage);
             appService.getAllMakes()
                 .then(function (response) {
                     $scope.data = response.data;
@@ -90,8 +89,7 @@
         };
 
 
-
-
+        // models 
 
         $scope.getAllModels = function () {
             appService.getAllModels()

@@ -43,7 +43,7 @@
                         </thead>
 
                         <tbody>
-                            <tr dir-paginate="make in data|orderBy:sortBy:reverse|filter:search|itemsPerPage:{{searchData.resultsPerPage}}">
+                            <tr dir-paginate="make in data|orderBy:sortBy:reverse|filter:search|itemsPerPage:10">
                                 <td><a ng-href="#!/make/details/{{make.Id}}">{{make.Id}}&nbsp;</a></td>
                                 <td>{{make.Name}}</td>
                                 <td>{{make.Abrv}}</td>
