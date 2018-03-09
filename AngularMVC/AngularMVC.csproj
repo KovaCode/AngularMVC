@@ -77,7 +77,7 @@
   <ItemGroup>
     <Content Include="index.html" />
     <Content Include="js\app.js" />
-    <Content Include="js\controller\controllerWS.js" />
+    <Content Include="js\controller\controllerMake.js" />
     <Content Include="js\service\api.service.js" />
     <Content Include="pages\404.html" />
     <Content Include="pages\home.html" />

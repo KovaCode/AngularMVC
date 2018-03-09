@@ -1,40 +1,25 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-</head>
-
-<body ng-app="app" ng-controller="controllerWS"> <!--ng-init="getMake(id)>"-->
+﻿<div ng-controller="controllerMake" ng-init="getMake(id)">
     <hr />
     <h3>
-        Edit Maker {{makeData.Name}}
+        Edit Maker {{data.Name}}
     </h3>
 
     <div class="form-control">
-        <form novalidate ng-submit="edit()">
-            <label>
-                ID wine:
-                <input type="text" ng-model="makeData.id" ng-disabled="true">
-            </label>
-            <br>
-            <label>
-                Name wine:
-                <input type="text" ng-model="makeData.name">
-            </label>
-            <br>
-            <label>
-                Percentage wine:
-                <input type="text" ng-model="makeData.abrv">
-            </label>
+        <form>
+            <label>ID</label>
+            <input type="text" ng-model="data.Id" ng-disabled="true">
             <br>
 
-            <input type="submit" class="btn btn-primary" value="Change">
-            <a ng-href="#!make" class="btn btn-warning">Back</a>
+            <label>Name</label>
+            <input type="text" ng-model="data.Name">
+            <br>
+
+            <label>Description:</label>
+            <input type="text" ng-model="data.Abrv">
+            <br>
+
+            <a ng-click="updateMake(data)" ng-href="#!details/{{id}}" class="btn btn-primary">Change</a>
+            <a ng-href="#!details/{{id}}" class="btn btn-warning">Back</a>
         </form>
-
-
-            <!--<a ng-click="createMake(makeData)" ng-href="#!make" class="btn btn-primary">Submit</a>-->
-            
     </div>
-</body>
-
-</html>
+</div>

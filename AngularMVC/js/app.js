@@ -8,23 +8,23 @@
             })
             .when('/make', {
                 templateUrl: 'pages/make/index.html',
-                controller: 'controllerWS'
+                controller: 'controllerMake'
             })
             .when('/makeCreate', {
                 templateUrl: 'pages/make/create.html',
-                controller: 'controllerWS'
+                controller: 'controllerMake'
             })
             .when('/details/:id', {
                 templateUrl: 'pages/make/details.html',
-                controller: 'controllerWS'
+                controller: 'controllerMake'
             })
             .when('/edit/:id', {
                 templateUrl: 'pages/make/edit.html',
-                controller: 'controllerWS'
+                controller: 'controllerMake'
             })
             .when('/model', {
                 templateUrl: 'pages/model/index.html',
-                controller: 'controllerWS'
+                controller: 'controllerMake'
             })
             .otherwise({
                 redirectTo: '/home'
@@ -35,11 +35,3 @@
 app.controller('HomeController', function ($scope) {
     $scope.message = 'Home page content...';
 });
-
-//app.controller('controllerWS', function ($scope) {
-//    $scope.message = 'Model page content...';
-//});
-
-//app.controller('controllerWS', function ($scope) {
-//    $scope.message = 'Contact us page content...';
-//});
