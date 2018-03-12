@@ -1,19 +1,19 @@
-﻿<div ng-app="app" ng-controller="controllerMake">
+﻿<div ng-app="app" ng-controller="controllerMake as makeCtrl">
     <hr />
     <h3>
         Details
     </h3>
-    <div ng-init="getMake(id)">
-        <!--<label>ID {{data.Id}}</label>-->
-        ID: <input ng-model="data.Id" ng-disabled="true">
+    <div ng-init="makeCtrl.getDataMakeId(id)">
+        <!--<label>ID {{makeCtrl.Id}}</label>-->
+        ID:<input ng-model="makeCtrl.data.Id" ng-disabled="true">
         <br>
-        Name: <input ng-model="data.Name" ng-disabled="true">
+        Name: <input ng-model="makeCtrl.data.Name" ng-disabled="true">
         <br>
-        Description: <input ng-model="data.Abrv" ng-disabled="true">
+        Description: <input ng-model="makeCtrl.data.Abrv" ng-disabled="true">
         <br>
     </div>
 
     <a ng-href="#!make" class="btn btn-warning btn-sm">Back</a>
-    <a ng-href="#!/edit/{{data.Id}}" class="btn btn-primary btn-sm">Edit</a>
-    <a ng-click="deleteMake(id)" ng-href="#!make" class="btn btn-danger btn-sm">Delete</a>
+    <a ng-href="#!/edit/{{id}}" class="btn btn-primary btn-sm">Edit</a>
+    <a ng-click="makeCtrl.deleteDataMake(id)" ng-href="#!make" class="btn btn-danger btn-sm">Delete</a>
 </div>

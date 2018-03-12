@@ -18,6 +18,10 @@
                 templateUrl: 'pages/make/details.html',
                 controller: 'controllerMake'
             })
+            .when('/edit', {
+                templateUrl: 'pages/make/edit.html',
+                controller: 'controllerMake'
+            })
             .when('/edit/:id', {
                 templateUrl: 'pages/make/edit.html',
                 controller: 'controllerMake'

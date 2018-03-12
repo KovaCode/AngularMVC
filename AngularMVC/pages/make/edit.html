@@ -1,25 +1,33 @@
-﻿<div ng-controller="controllerMake" ng-init="getMake(id)">
+﻿<div ng-controller="controllerMake as makeCtrl" ng-init="makeCtrl.getDataMakeId(id)">
     <hr />
     <h3>
         Edit Maker {{data.Name}}
     </h3>
 
-    <div class="form-control">
-        <form>
-            <label>ID</label>
-            <input type="text" ng-model="data.Id" ng-disabled="true">
-            <br>
+    <div class="container">
 
-            <label>Name</label>
-            <input type="text" ng-model="data.Name">
-            <br>
+        <form name="edit.userForm" ng-submit="makeCtrl.updateDataMake(makeCtrl.data)" ng-h>
+            <div class="form-control">
+                <label>ID</label>
+                <input type="text" ng-model="makeCtrl.data.Id" ng-disabled="true">
+            </div>
 
-            <label>Description:</label>
-            <input type="text" ng-model="data.Abrv">
-            <br>
+            <div class="form-control">
+                <label>Name</label>
+                <input type="text" ng-model="makeCtrl.data.Name">
+            </div>
 
-            <a ng-click="updateMake(data)" ng-href="#!details/{{id}}" class="btn btn-primary">Change</a>
-            <a ng-href="#!details/{{id}}" class="btn btn-warning">Back</a>
+            <div class="form-control">
+                <label>Description:</label>
+                <input type="text" ng-model="makeCtrl.data.Abrv">
+            </div>
+
+            <button type="submit">Save</button>
+            <!--<a ng-href="#!details/{{makeCtrl.id}}" class="btn btn-warning">Back</a>-->
         </form>
+
+
+        <h2>{{data}}</h2>
+
     </div>
 </div>
