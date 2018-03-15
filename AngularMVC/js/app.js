@@ -1,4 +1,4 @@
-﻿var app = angular.module('app', ['ngRoute', 'angularUtils.directives.dirPagination'])
+﻿var app = angular.module('app', ['ngRoute', 'angularUtils.directives.dirPagination', 'ui.bootstrap.pagination'])
     .config(function ($routeProvider) {
 
         $routeProvider

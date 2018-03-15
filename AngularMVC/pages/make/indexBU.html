@@ -1,0 +1,72 @@
+﻿<div class="jumbotron text-center">
+    <h1>Makes Page</h1>
+    <p>{{ message }}</p>
+</div>
+
+<div>
+    <div class="container" ng-controller="controllerMake as makeCtrl" ng-init="makeCtrl.getDataMakeAllFilter(paramsFilter)">
+
+        <div class="container">
+            <form ng-submit="makeCtrl.getDataMakeAllFilter(paramsFilter)" name="search.form">
+                <div class="container">
+                    <div class="form-control">
+                        <select ng-model="paramsFilter.resultsPerPage" <!--ng-change="makeCtrl.getDataMakeAllFilter(paramsFilter)"-->>
+                            <option>5</option>
+                            <option selected>10</option>
+                            <option>20</option>
+                            <option>30</option>
+                            <option>40</option>
+                            <option>50</option>
+                        </select>
+                        <br />
+                        Search: <input class="form-control" type="text" ng-model="paramsFilter.searchValue" placeholder="Type your search...">
+
+                        <button class="form-control" type="submit">Search</button>
+                    </div>
+                </div>
+
+            </form>
+
+
+
+            <div class="container">
+
+                <h1>{{noOfPages(dataAll)}}</h1>
+                <h1>{{makeCtrl.count(dataAll)}}</h1>
+
+                <table class="table table-striped table-hover">
+                    <!--HEAD-->
+                    <thead>
+                        <tr>
+                            <th ng-click="sort('Name')" ng-model="sortOrder">
+                                Name
+                                <span class="glyphicon sort-icon" ng-show="sortBy=='Name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                            </th>
+
+                            <th ng-click="sort('Abrv')" ng-model="sortOrder">
+                                Abrv
+                                <span class="glyphicon sort-icon" ng-show="sortBy=='Abrv'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                            </th>
+
+                        </tr>s
+                    </thead>
+
+                    <!--BODY-->
+                    <tbody>
+                        <tr ng-repeat='item in dataAll'>
+                            <td><a ng-href='#!/details/{{item.Id}}'>{{item.Name}}</a></td>
+                            <td>{{item.Abrv}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <pagination num-pages="noOfPages(dataAll)" current-page="getDataMakeAll()" class="pagination-small"></pagination>
+
+                <pre>The selected page no: {{paramsFilter.page}}</pre>
+                <pre>Params {{paramsFilter}}</pre>
+
+
+            </div>
+        </div>
+    </div>
+</div>

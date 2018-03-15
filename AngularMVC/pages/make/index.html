@@ -3,67 +3,36 @@
     <p>{{ message }}</p>
 </div>
 
-<div>
-    <div class="container" ng-controller="controllerMake as makeCtrl">
-
-
-        <div class="panel panel-primary">
-            <div class="panel-heading">Search:</div>
-            <div class="panel-body">
-
-                <form>
-                    <div class="container" ng-init="makeCtrl.getDataMakeAll()">
-                        <input type="number" step="5" min="5" max="100" ng-required="true" ng-model="paramsFilter.results" value={{paramsFilter.results | number:2 }} ng-click="makeCtrl.getDataMakeAllFilter(paramsFilter)" />
-                    </div>
-                    <h5>URL {{url}}</h5>
-                    <h5>Params {{paramsFilter}}</h5>
-                    <div class="col-12">
-                        <div>
-                            <input type="text" ng-keydown="makeCtrl.getDataMakeAllFilter(paramsFilter)" ng-model="paramsFilter.searchValue" class="form-control" placeholder="Type your search...">
-                        </div>
-                    </div>
-
-                    <!--<a ng-href="#!makeCreate" class="btn btn-primary">Create</a>-->
-
-                </form>
-
-                <div class="container">
-                    <table class="table table-striped table-hover">
-                        <!--HEAD-->
-                        <thead>
-                            <tr>
-                                <th ng-click="sort('Name')" ng-model="paramsFilter.sortOrder">
-                                    Name
-                                    <span class="glyphicon sort-icon" ng-show="paramsFilter.sortBy=='Name'" ng-class="{'glyphicon-chevron-up':paramsFilter.reverse,'glyphicon-chevron-down':!paramsFilter.reverse}"></span>
-                                </th>
-
-                                <th ng-click="sort('Abrv')" ng-model="paramsFilter.sortOrder">
-                                    Abrv
-                                    <span class="glyphicon sort-icon" ng-show="paramsFilter.sortBy=='Abrv'" ng-class="{'glyphicon-chevron-up':paramsFilter.reverse,'glyphicon-chevron-down':!paramsFilter.reverse}"></span>
-                                </th>
-
-                            </tr>
-                        </thead>
-
-                        <!--BODY-->
-                        <tbody>
-                            <tr dir-paginate="item in dataAll | orderBy:paramsFilter.sortBy:paramsFilter.sortOrder | filter:paramsFilter.searchValue | itemsPerPage: paramsFilter.results ">
-                                <td><a ng-href="#!/details/{{item.Id}}">{{item.Name}}&nbsp;</a></td>
-                                <td>{{item.Abrv}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <dir-pagination-controls max-size="100"
-                                             direction-links="true"
-                                             boundary-links="true">
-                    </dir-pagination-controls>
-                </div>
-            </div>
+<div ng-app="app" ng-controller="controllerMake" ng-init="loadData()">
+    <form class="form-inline" ng-submit="search()" role="form">
+        <div class="form-group">
+            <input type="text" class="form-control input-sm" ng-model="pagingInfo.searchValue" placeholder="Search...">
+            <button type="submit" class="btn btn-info btn-sm"><strong>Search</strong></button>
         </div>
-    </div>
+    </form>
 
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th><a href="" ng-click="sort('Id')">ID</a></th>
+                <th><a href="" ng-click="sort('Name')">Name</a></th>
+                <th><a href="" ng-click="sort('Abrv')">Abrv</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in dataAll">
+                <td>{{item.Id}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Abrv}}</td>
+            </tr>
+        </tbody>
+    </table>
 
-
-
+    <pagination page="pagingInfo.page"
+                total-items="pagingInfo.totalItems"
+                items-per-page="pagingInfo.resultsPerPage"
+                on-select-page="selectPage(page)"
+                max-size="10"
+                rotate="false"
+                boundary-links="true"></pagination>
 </div>

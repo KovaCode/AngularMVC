@@ -4,30 +4,71 @@ angular.module('app')
     .controller('controllerMake', ['$scope', '$routeParams', 'appService', function ($scope, $routeParams, appService) {
 
         var makeCtrl = this;
+        $scope.dataAll = [];
 
         $scope.id = $routeParams.id;
         $scope.url = null;
 
         $scope.paramsFilter = {
             searchValue: "",
-            results: 10,
-            sortOrder: "desc",
-            sortBy: "Name",
+            resultsPerPage: 5,
             page: 1
         };
 
 
-        this.data = {
-            Id: null,
-            Name: null,
-            Abrv: null
+
+        $scope.pagingInfo = {
+            page: 1,
+            resultsPerPage: 10,
+            sortBy: 'name',
+            sortOrder: true,
+            searchValue: '',
+            totalItems: 0
         };
 
-        $scope.dataAll = [{
-            Id: null,
-            Name: null,
-            Abrv: null
-        }];
+        $scope.search = function () {
+            $scope.pagingInfo.page = 1;
+            loadData();
+        };
+
+        $scope.sort = function (sortBy) {
+            if (sortBy === $scope.pagingInfo.sortBy) {
+                $scope.pagingInfo.sortOrder = !$scope.pagingInfo.sortOrder;
+            } else {
+                $scope.pagingInfo.sortBy = sortBy;
+                $scope.pagingInfo.sortOrder = false;
+            }
+            $scope.pagingInfo.page = 1;
+            loadData();
+        };
+
+        $scope.selectPage = function (page) {
+            $scope.pagingInfo.page = page;
+            loadData();
+        };
+
+
+
+        //$scope.count = function (data) {
+        //    return appService.count(data);
+        //}
+
+        //$scope.currentPage = 1;
+
+
+        //$scope.noOfPages = function (data) {
+        //    var numPages = appService.numOfPages(data, $scope.paramsFilter.resultsPerPage)
+
+        //    console.log("Number of pages: " + numPages);
+
+        //    return numPages;
+        //}
+
+        //$scope.setPage = function () {
+        //    var data = $scope.dataAll;
+        //    $scope.data = data.get(($scope.currentPage - 1) * $scope.paramsFilter.resultsPerPage, $scope.paramsFilter.resultsPerPage);
+        //};
+        //$scope.$watch('currentPage', $scope.dataAll);
 
 
         this.getDataMakeId = function (id) {
@@ -54,7 +95,7 @@ angular.module('app')
         };
 
         this.getDataMakeAll = function () {
-            appService.getDataAll('make', 'all')
+            appService.getDataAll('make', $scope.paramsFilter)
                 .then(function successCallback(response) {
                     $scope.dataAll = response.data;
                     $scope.error = null;
@@ -94,32 +135,47 @@ angular.module('app')
                 .then(onSuccess, onError);
         };
 
-        $scope.sort = function (keyname) {
-            $scope.sortBy = keyname; 
-            $scope.reverse = !$scope.reverse;
-
-            this.paramsFilter.sortBy = keyname;
-            this.paramsFilter.sortOrder = $scope.reverse;
-            
-        };
+        //$scope.sort = function (keyname) {
+        //    $scope.sortBy = keyname;
+        //    $scope.reverse = !$scope.reverse;
+        //};
 
 
 
-        void function refreshDataMake() {
-            appService.getDataAll('make', $scope.paramsFilter)
-                .then(function successCallback(response) {
-                    $scope.dataAll = response.data;
-                }, function errorCallback(response) {
-                    console.log(response.statusText);
-                });
-        }
+        //void function refreshDataMake() {
+        //    appService.getDataAll('make', $scope.paramsFilter)
+        //        .then(function successCallback(response) {
+        //            $scope.dataAll = response.data;
+        //        }, function errorCallback(response) {
+        //            console.log(response.statusText);
+        //        });
+        //}
 
         function onSuccess(response) {
-            refreshDataMake();
+            loadData();
         }
 
         function onError(response) {
             console.log(response.statusText);
         }
+
+
+        function loadData() {
+            $scope.dataAll = null;
+            appService.getDATAconcept('make', $scope.pagingInfo)
+                .then(function successCallback(response) {
+                    $scope.dataAll = response.data;
+                    $scope.pagingInfo.totalItems = $scope.dataAll.length;;
+
+                    console.log("COUNT: " + $scope.pagingInfo.totalItems)
+
+                }, function errorCallback(response) {
+                    console.log(response.statusText);
+                });
+        }
+
+        // initial table load
+        loadData();
+
 
     }]);

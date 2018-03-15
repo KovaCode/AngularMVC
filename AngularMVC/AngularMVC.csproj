@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="js\service\app.factory.js" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -78,14 +79,17 @@
     <Content Include="index.html" />
     <Content Include="js\app.js" />
     <Content Include="js\controller\controllerMake.js" />
+    <Content Include="js\controlls\pagination\pagination.html" />
+    <Content Include="js\controlls\pagination\pagination.js" />
     <Content Include="js\service\api.service.js" />
     <Content Include="pages\404.html" />
     <Content Include="pages\home.html" />
     <Content Include="pages\make\edit.html" />
     <Content Include="pages\make\details.html" />
     <Content Include="pages\make\create.html" />
-    <Content Include="pages\model\index.html" />
     <Content Include="pages\make\index.html" />
+    <Content Include="pages\model\index.html" />
+    <Content Include="pages\make\indexBU.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
