@@ -1,38 +1,100 @@
 ﻿<div class="jumbotron text-center">
-    <h1>Makes Page</h1>
+    <h1>
+        Makes Page
+    </h1>
     <p>{{ message }}</p>
 </div>
 
-<div ng-app="app" ng-controller="controllerMake" ng-init="loadData()">
-    <form class="form-inline" ng-submit="search()" role="form">
-        <div class="form-group">
-            <input type="text" class="form-control input-sm" ng-model="pagingInfo.searchValue" placeholder="Search...">
-            <button type="submit" class="btn btn-info btn-sm"><strong>Search</strong></button>
+<div id="make" class="container">
+
+    <div ng-controller="controllerMake" ng-init="loadData()">
+
+
+        <form class="" ng-submit="search()" role="form">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="input-group">
+
+                        <input type="text" class="form-control form-control-sm" ng-model="pagingInfo.currentFilter" id="search" placeholder="Search for...">
+
+                        <span class="input-group-btn-sm">
+                            <button class="btn btn-info" type="button">Go!</button>
+                        </span>
+
+  
+
+
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <select ng-model="pagingInfo.resultsPerPage" class="form-control" id="resultPerPage" size="1" , style="width:10%">
+                        <option>5</option>
+                        <option>10</option>
+                        <option>15</option>
+                        <option>20</option>
+                        <option>25</option>
+                        <option>50</option>
+                        <option>100</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <br />
+
+        <div class="row">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr></tr>
+
+                    <tr>
+                        <th class="col-sm-5"><a href="" ng-click="sort('Name')">Name</a></th>
+                        <th class="col-sm-4"><a href="" ng-click="sort('Abrv')">Abrv</a></th>
+                        <th class="cols-sm-3">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--<tr ng-repeat="item in dataAll">-->
+                    <tr dir-paginate="item in dataAll | itemsPerPage: pagingInfo.resultsPerPage" total-items="pagingInfo.totalItems" current-page="pagingInfo.page">
+                        <td class="col-sm-5"><a ng-href='#!/details/{{item.Id}}'>{{item.Name}}</a></td>
+                        <td class="col-sm-4">{{item.Abrv}}</td>
+                        <td class="col-sm-3">
+
+                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                <a class="btn btn-info btn-sm" ng-href="#!/details/{{item.Id}}">i</a>
+                                <a class="btn btn-warning btn-sm" ng-href="#!/edit/{{item.Id}}">!</a>
+                                <a ng-click="makeCtrl.deleteDataMake(id)" ng-href="#!make" class="btn btn-danger btn-sm">x</a>
+                            </div>
+                        </td>
+
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <th colspan="3">
+                            <div class="form-group">
+                                <dir-pagination-controls on-page-change="pageChanged()"></dir-pagination-controls>
+                            </div>
+                        </th>
+
+
+                    </tr>
+                </tfoot>
+            </table>
         </div>
-    </form>
 
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-            <tr>
-                <th><a href="" ng-click="sort('Id')">ID</a></th>
-                <th><a href="" ng-click="sort('Name')">Name</a></th>
-                <th><a href="" ng-click="sort('Abrv')">Abrv</a></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="item in dataAll">
-                <td>{{item.Id}}</td>
-                <td>{{item.Name}}</td>
-                <td>{{item.Abrv}}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div>
+            <a ng-href="#!makeCreate" class="btn btn-primary">Create</a>
+        </div>
 
-    <pagination page="pagingInfo.page"
-                total-items="pagingInfo.totalItems"
-                items-per-page="pagingInfo.resultsPerPage"
-                on-select-page="selectPage(page)"
-                max-size="10"
-                rotate="false"
-                boundary-links="true"></pagination>
+        <h5>{{pagingInfo}}</h5>
+
+
+
+    </div>
 </div>
+
+
+
+

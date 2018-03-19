@@ -72,11 +72,11 @@
             if (id != null) {
                 url = url + '/' + id;
             }
-            console.log("ID:" + id)
-            console.log("URL:" + url)
-            console.log("method:" + method)
-            console.log("params:" + params)
-            console.log("data:" + data)
+            //console.log("ID:" + id)
+            //console.log("URL:" + url)
+            //console.log("method:" + method)
+            //console.log("params:" + params)
+            //console.log("data:" + data)
 
             return $http({
                 url: url,

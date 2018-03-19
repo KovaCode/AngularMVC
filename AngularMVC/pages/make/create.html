@@ -4,6 +4,10 @@
         Create new Maker
     </h3>
 
+    <div class="alert alert-success" role="alert">
+        This is a success alert—check it out!
+    </div>
+
     <div class="form-control" ng-controller="controllerMake as ctrlMake">
         <form>
             <div>
@@ -15,7 +19,7 @@
                 <label for="abrv">Abrv.</label>
                 <input ng-model="makeData.abrv" placeholder="input maker....">
             </div>
-            <a ng-click="ctrlMake.createDataMake(makeData)" ng-href="#!make" class="btn btn-primary">Submit</a>
+            <a ng-click="ctrlMake.createDataMake(makeData)" ng-href="#!/make" class="btn btn-primary">Submit</a>
             <a ng-href="#!make" class="btn btn-warning">Back</a>
         </form>
     </div>
